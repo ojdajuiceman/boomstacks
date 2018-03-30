@@ -1,19 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="index.css">
-</head>
+<!DOCTYPE html> 
+<html> 
+<head><link rel="stylesheet" type="text/css" href="index.css"></head>
 
-<script>
-	var x = "Put your string here";  
-    var cur = new Date();
-    var reg = new Date("May 12, 2018 14:00:00")
-    var output = Math.floor((reg.getTime() - cur.getTime())/(1000*60*60*24))
-    
-    document.write("<p><big>ONLY "
-        + output + " DAYS UNTIL THE ALUMNI REGATTA.</big></p>");
-    document.write("<p><big>BUCKLE UP, BITCHES.</big></p>");
-</script>
+<script type="text/javascript">
+// This function calculates the time from "now" to that given
+// in the "date_string" parameter.  This difference in time is
+// expressed in days, hours, minutes, and seconds. 
+// These values are then used to update HTML elements that have
+// an id whose value corresponds to the unit of time. 
+// For example:
+//
+//  <span id="days"></span> 
+//
+// would contain the number of days from now until the date 
+// specified in the date_string parameter.
+//
+// Additionally, the value provided in the "date_string" parameter
+// should be included in an HTML element whose id="end-date".
+var countdown = function(date_string) {
+    var now = new Date();
+    var end = new Date(date_string);
+ 
+    var t = end.getTime() - now.getTime();
+    var s = Math.round(t/1000);
+ 
+    var m = Math.round(s / 60);
+    s = Math.round(s % 60);
+ 
+    var h = Math.round(m / 60);
+    m = Math.round(m % 60);
+ 
+    var d = Math.round(h / 24);
+    h = Math.round(h % 24);
+ 
+    document.getElementById("days").innerHTML = d;
+    document.getElementById("hours").innerHTML = (h < 10) ? "0" + h : h;
+    document.getElementById("minutes").innerHTML = (m < 10) ? "0" + m : m;
+    document.getElementById("seconds").innerHTML = (s < 10) ? "0" + s : s;
+    document.getElementById("end").innerHTML;
+}
+window.onload = function() {
+    countdown("May 12, 2018 14:00:00");
+    setInterval(countdown, 1000, "May 12, 2018 14:00:00");
+}
+</script> 
+ 
+<body> 
+<span id="end"></span>
+<p id="countdown">  
+<font style="color:#FFDF00"> <span id="days"></span> DAYS, <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span></font>
+  UNTIL THE 2018 UCLA ALUMNI REGATTA.
+<br/><br/>
+BUCKLE UP BITCHES, YOUR ASS IS GRASS. <font style="color:#00FFFF"> ESPECIALLY YOU, MURK MANDERS.</font>
+</p> 
 
-</head>
-</html>
+</body></html> 
